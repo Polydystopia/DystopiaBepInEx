@@ -14,6 +14,7 @@
     <ItemGroup>
         <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
         <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+        <PackageReference Include="HarmonyX" Version="2.13.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -23,11 +24,35 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="DebugLogger">
+        <HintPath>C:\Steam\steamapps\common\The Battle of Polytopia\BepInEx\interop\DebugLogger.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppMicrosoft.Extensions.Logging">
+        <HintPath>..\..\..\..\..\..\..\Steam\steamapps\common\The Battle of Polytopia\BepInEx\interop\Il2CppMicrosoft.Extensions.Logging.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppMicrosoft.Extensions.Logging.Abstractions">
+        <HintPath>..\..\..\..\..\..\..\Steam\steamapps\common\The Battle of Polytopia\BepInEx\interop\Il2CppMicrosoft.Extensions.Logging.Abstractions.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppMicrosoft.Extensions.Logging.Configuration">
+        <HintPath>..\..\..\..\..\..\..\Steam\steamapps\common\The Battle of Polytopia\BepInEx\interop\Il2CppMicrosoft.Extensions.Logging.Configuration.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppMicrosoft.Extensions.Logging.Console">
+        <HintPath>..\..\..\..\..\..\..\Steam\steamapps\common\The Battle of Polytopia\BepInEx\interop\Il2CppMicrosoft.Extensions.Logging.Console.dll</HintPath>
+      </Reference>
       <Reference Include="Il2Cppmscorlib">
         <HintPath>..\Il2Cppmscorlib.dll</HintPath>
       </Reference>
-      <Reference Include="PolytopiaAssembly">
-        <HintPath>..\PolytopiaAssembly.dll</HintPath>
+        <Reference Include="PolytopiaAssembly">
+            <HintPath>..\PolytopiaAssembly.dll</HintPath>
+        </Reference>
+        <Reference Include="GameLogicAssembly">
+            <HintPath>..\GameLogicAssembly.dll</HintPath>
+        </Reference>
+        <Reference Include="PolytopiaBackendBase">
+            <HintPath>..\PolytopiaBackendBase.dll</HintPath>
+        </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>C:\Steam\steamapps\common\The Battle of Polytopia\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
       </Reference>
     </ItemGroup>
 </Project>

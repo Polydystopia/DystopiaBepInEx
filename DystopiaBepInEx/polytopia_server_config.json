@@ -1,3 +1,4 @@
 ﻿{
-  "ServerUrl": "http://localhost:5051"
+  "ServerUrl": "http://localhost:5051",
+  "VerboseLogging": false
 }
