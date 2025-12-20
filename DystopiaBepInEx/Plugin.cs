@@ -9,7 +9,7 @@ namespace DystopiaBepInEx;
 
 public class ServerConfig
 {
-    public string ServerUrl { get; init; } = "http://localhost:5051";
+    public string ServerUrl { get; init; } = "https://dev.polydystopia.xyz";
     public bool VerboseLogging { get; init; } = false;
 }
 
@@ -17,7 +17,7 @@ public class ServerConfig
 public class Plugin : BasePlugin
 {
     private const string CONFIG_FILE_NAME = "polydystopia_server_config.json";
-    private const string DEFAULT_SERVER_URL = "http://localhost:5051";
+    private const string DEFAULT_SERVER_URL = "https://dev.polydystopia.xyz";
     private Harmony _harmony = null!;
 
     internal static string ServerUrl { get; private set; } = DEFAULT_SERVER_URL;
@@ -32,10 +32,8 @@ public class Plugin : BasePlugin
         BuildConfigHelper.GetSelectedBuildConfig().buildServerURL = BuildServerURL.Custom;
         BuildConfigHelper.GetSelectedBuildConfig().customServerURL = config.ServerUrl;
 
-        // Always initialize Harmony for mod GLD patching
         _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
 
-        // Apply mod GLD patches (GameState.Deserialize reads trailing hash, legacy version >= 1000 support)
         _harmony.PatchAll(typeof(ModGldPatches));
         Log.LogInfo("Mod GLD patches applied");
 
@@ -68,8 +66,8 @@ public class Plugin : BasePlugin
                 if (config != null && !string.IsNullOrEmpty(config.ServerUrl))
                 {
                     Log.LogInfo($"Loaded config from {CONFIG_FILE_NAME}:");
-                    Log.LogInfo($"  - Server URL: {config.ServerUrl}");
-                    Log.LogInfo($"  - Verbose Logging: {config.VerboseLogging}");
+                    Log.LogInfo($"- Server URL: {config.ServerUrl}");
+                    Log.LogInfo($"- Verbose Logging: {config.VerboseLogging}");
                     return config;
                 }
             }
@@ -79,8 +77,8 @@ public class Plugin : BasePlugin
                 JsonSerializer.Serialize(defaultConfig, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(CONFIG_FILE_NAME, defaultJson);
             Log.LogInfo($"Created default config file {CONFIG_FILE_NAME}");
-            Log.LogInfo($"  - Server URL: {DEFAULT_SERVER_URL}");
-            Log.LogInfo($"  - Verbose Logging: disabled");
+            Log.LogInfo($"- Server URL: {DEFAULT_SERVER_URL}");
+            Log.LogInfo($"- Verbose Logging: disabled");
 
             return defaultConfig;
         }
